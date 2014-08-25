@@ -1,7 +1,7 @@
 DOMCursor
 =========
 
-Filtered cursoring on DOM documents.  DOMCursors can move forwards or backwards, by node or by character, with settable filters that can seamlessly skip over parts of the DOM.
+Filtered cursoring on DOM trees.  DOMCursors can move forwards or backwards, by node or by character, with settable filters that can seamlessly skip over parts of the DOM.
 
 This readme file is also the code.
 
@@ -91,7 +91,7 @@ A DOMCursor has a node, a position, a filter, and a type.
         selectRange r
         this
 
-Find the first text node (the 'backwards' argument is optional and if true,
+**firstText** find the first text node (the 'backwards' argument is optional and if true,
 indicates to find the first text node behind the cursor).
 
       firstText: (backwards)->
@@ -100,7 +100,7 @@ indicates to find the first text node behind the cursor).
           n = (if backwards then n.prev() else n.next())
         n
 
-Count the characters in the filtered nodes until we get to (node, pos)
+**countChars** count the characters in the filtered nodes until we get to (node, pos)
 
 Include (node, 0) up to but not including (node, pos)
 
@@ -442,7 +442,7 @@ Utility functions
 
 These are available as properties on DOMCursor.
 
-    # Thanks to rangy for this: http://code.google.com/p/rangy/
+    # Thanks to rangy for this: https://github.com/timdown/rangy
     isCollapsed = (node)->
       if node
         type = node.nodeType

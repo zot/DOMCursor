@@ -427,9 +427,7 @@ A mutable cursor -- cursor movement, filter changes, etc. change the cursor inst
 
     class MutableDOMCursor extends DOMCursor
       constructor: (@node, @pos, @filter)-> super node, pos, filter
-      setFilter: (f)->
-        @filter = f
-        this
+      setFilter: (@filter)-> this
       newPos: (@node, @pos)-> @computeType()
       copy: -> new MutableDOMCursor @node, @pos, @filter
       mutable: -> this

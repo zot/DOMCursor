@@ -5,9 +5,12 @@ Filtered cursoring on DOM trees.  DOMCursors can move forwards or backwards, by 
 
 This readme file is also the code.
 
-For example, in Leisure, I use it like this, to retrieve text from the page (scroll down to see docs on these methods, by the way) -- ignore the leading ->, it's just so I can get syntax highlighting in viewers that support it:
+Here are some examples (I'm wrapping them in a -> so I can get syntax highlighting in viewers that support it).
 
     ->
+
+In Leisure, I use it like this, to retrieve text from the page (scroll down to see docs on these methods, by the way) -- ignore the leading ->, it's just so I can get
+
       DOMCursor.prototype.filterOrg = ->
         @addFilter (n)-> !n.hasAttribute('data-nonorg') || 'skip'
 
@@ -23,7 +26,6 @@ For example, in Leisure, I use it like this, to retrieve text from the page (scr
 
 And like this for cursor movement.  Once I have the cursor, I can use forwardChar, backwardChar, forwardLine, backwardLine to move it around:
 
-    ->
       domCursorForCaret = ->
         sel = getSelection()
         parent = parentForNode sel.focusNode

@@ -7,30 +7,32 @@ This readme file is also the code.
 
 For example, in Leisure, I use it like this, to retrieve text from the page (scroll down to see docs on these methods, by the way):
 
-    # DOMCursor.prototype.filterOrg = ->
-    #   @addFilter (n)-> !n.hasAttribute('data-nonorg') || 'skip'
-    #
-    # domCursor = (node, pos)-> new DOMCursor(node, pos).filterOrg()
-    #
-    # # full text for node
-    # getOrgText = (node)->
-    #   domCursor node.firstChild, 0
-    #     .mutable()
-    #     .filterTextNodes()
-    #     .filterParent node
-    #     .getText()
+    ->
+      DOMCursor.prototype.filterOrg = ->
+        @addFilter (n)-> !n.hasAttribute('data-nonorg') || 'skip'
+
+      domCursor = (node, pos)-> new DOMCursor(node, pos).filterOrg()
+
+      # full text for node
+      getOrgText = (node)->
+        domCursor node.firstChild, 0
+          .mutable()
+          .filterTextNodes()
+          .filterParent node
+          .getText()
 
 And like this for cursor movement.  Once I have the cursor, I can use forwardChar, backwardChar, forwardLine, backwardLine to move it around:
 
-    # domCursorForCaret = ->
-    #   sel = getSelection()
-    #   parent = parentForNode sel.focusNode
-    #   n = domCursor sel.focusNode, sel.focusOffset
-    #     .mutable()
-    #     .filterVisibleTextNodes()
-    #     .filterParent parent
-    #     .firstText()
-    #   if n.pos < n.node.length then n else n.next()
+    ->
+      domCursorForCaret = ->
+        sel = getSelection()
+        parent = parentForNode sel.focusNode
+        n = domCursor sel.focusNode, sel.focusOffset
+          .mutable()
+          .filterVisibleTextNodes()
+          .filterParent parent
+          .firstText()
+        if n.pos < n.node.length then n else n.next()
 
 DOMCursor Class
 ---------------

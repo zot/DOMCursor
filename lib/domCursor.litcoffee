@@ -32,8 +32,8 @@ And like this for cursor movement.  Once I have the cursor, I can use forwardCha
     #     .firstText()
     #   if n.pos < n.node.length then n else n.next()
 
-DOMCursor
----------
+DOMCursor Class
+---------------
 
 DOMCursors are immutable -- operations on them return new DOMCursers.
 There are two ways to get mutabile cursors, sending @mutable() or
@@ -398,8 +398,8 @@ the end if the node ends in a newline)
           stubbornCharRectPrev(@node, @pos, r) || stubbornCharRectNext(@node, @pos, r)
         else stubbornCharRect @node, @pos, r
 
-EmptyDOMCursor
---------------
+EmptyDOMCursor Class
+--------------------
 
 An empty cursor
 
@@ -414,8 +414,8 @@ An empty cursor
     #singleton empty node cursor
     emptyDOMCursor = new EmptyDOMCursor()
 
-MutableDOMCursor
-----------------
+MutableDOMCursor Class
+----------------------
 
 A mutable cursor -- cursor movement, filter changes, etc. change the cursor instead of returning a new one.
 

@@ -9,7 +9,7 @@ Here are some examples (I'm wrapping them in a -> so I can get syntax highlighti
 
     ->
 
-In Leisure, I use it like this, to retrieve text from the page (scroll down to see docs on these methods, by the way) -- ignore the leading ->, it's just so I can get
+In Leisure, I use it like this, to retrieve text from the page (scroll down to see docs on these methods, by the way):
 
       DOMCursor.prototype.filterOrg = ->
         @addFilter (n)-> !n.hasAttribute('data-nonorg') || 'skip'

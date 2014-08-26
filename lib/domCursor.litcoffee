@@ -20,7 +20,7 @@ For example, in Leisure, I use it like this, to retrieve text from the page (scr
     #     .filterParent node
     #     .getText()
 
-And like this for cursor movement:
+And like this for cursor movement.  Once I have the cursor, I can use forwardChar, backwardChar, forwardLine, backwardLine to move it around:
 
     # domCursorForCaret = ->
     #   sel = getSelection()

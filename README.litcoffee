@@ -5,7 +5,7 @@ Filtered cursoring on DOM trees.  DOMCursors can move forwards or backwards, by 
 
 This readme file is also the code.
 
-For example, in Leisure, I use it like this, to retrieve text from the page (scroll down to see docs on these methods, by the way):
+For example, in Leisure, I use it like this, to retrieve text from the page (scroll down to see docs on these methods, by the way) -- ignore the leading ->, it's just so I can get syntax highlighting in viewers that support it:
 
     ->
       DOMCursor.prototype.filterOrg = ->

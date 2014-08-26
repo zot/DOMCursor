@@ -23,6 +23,33 @@ A DOMCursor has a node, a position, a filter, and a type.
   - 'quit': to end to make @next() or @prev() return an empty DOMCursor
 - type: 'empty', 'text', or 'element'
 
+For example, in Leisure, I use it like this, to retrieve text from the page:
+
+    # DOMCursor.prototype.filterOrg = ->
+    #   @addFilter (n)-> !n.hasAttribute('data-nonorg') || 'skip'
+    #
+    # domCursor = (node, pos)-> new DOMCursor(node, pos).filterOrg()
+    #
+    # # full text for node
+    # getOrgText = (node)->
+    #   domCursor node.firstChild, 0
+    #     .mutable()
+    #     .filterTextNodes()
+    #     .filterParent node
+    #     .getText()
+
+And like this for cursor movement:
+
+    # domCursorForCaret = ->
+    #   sel = getSelection()
+    #   parent = parentForNode sel.focusNode
+    #   n = domCursor sel.focusNode, sel.focusOffset
+    #     .mutable()
+    #     .filterVisibleTextNodes()
+    #     .filterParent parent
+    #     .firstText()
+    #   if n.pos < n.node.length then n else n.next()
+
     class DOMCursor
       constructor: (@node, @pos, filter)->
         @pos = @pos ? 0

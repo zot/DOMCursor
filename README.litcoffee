@@ -54,6 +54,7 @@ A DOMCursor has a node, a position, a filter, and a type.
   - 'quit': to end to make @next() or @prev() return an empty DOMCursor
 - type: 'empty', 'text', or 'element'
 
+The class...
 
     class DOMCursor
       constructor: (@node, @pos, filter)->

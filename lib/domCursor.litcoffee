@@ -432,7 +432,7 @@ A mutable cursor -- cursor movement, filter changes, etc. change the cursor inst
       copy: -> new MutableDOMCursor @node, @pos, @filter
       mutable: -> this
       immutable: -> new DOMCursor @node, @pos, @filter
-      save: -> new DOMCursor @node, @pos, @filter
+      save: -> @immutable()
       restore: (np)->
         @node = np.node
         @pos = np.pos
@@ -483,7 +483,6 @@ These are available as properties on DOMCursor.
         /^(script|style)$/i.test(node.nodeName) ||
         #(type == Node.ELEMENT_NODE && (node.offsetWidth == 0 || node.offsetHeight == 0))
         (type == Node.ELEMENT_NODE && node.offsetHeight == 0)
-      else false
 
     selectRange = (r)->
       sel = getSelection()
@@ -512,7 +511,8 @@ These are available as properties on DOMCursor.
       r = r || document.createRange()
       r.setStart node, pos
       r.collapse true
-      _(r.getClientRects()).last()
+      rects = r.getClientRects()
+      rects[rects.length - 1]
 
     DOMCursor.MutableDOMCursor = MutableDOMCursor
     DOMCursor.emptyDOMCursor = emptyDOMCursor

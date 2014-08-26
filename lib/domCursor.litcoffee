@@ -5,25 +5,7 @@ Filtered cursoring on DOM trees.  DOMCursors can move forwards or backwards, by 
 
 This readme file is also the code.
 
-DOMCursor
----------
-
-DOMCursors are immutable -- operations on them return new DOMCursers.
-There are two ways to get mutabile cursors, sending @mutable() or
-sending @withMutations (m)-> ...
-
-A DOMCursor has a node, a position, a filter, and a type.
-
-- node: like with ranges, a DOM node
-- position: like with ranges, either the index of a child, for elements, or the index of a character, for text nodes.
-- filter: a function used by @next() and @prev() to skip over portions of DOM. It returns
-  - truthy: to accept a node but its children are still filtered
-  - falsey: to reject a node but its children are still filtered
-  - 'skip': to skip a node and its children
-  - 'quit': to end to make @next() or @prev() return an empty DOMCursor
-- type: 'empty', 'text', or 'element'
-
-For example, in Leisure, I use it like this, to retrieve text from the page:
+For example, in Leisure, I use it like this, to retrieve text from the page (scroll down to see docs on these methods, by the way):
 
     # DOMCursor.prototype.filterOrg = ->
     #   @addFilter (n)-> !n.hasAttribute('data-nonorg') || 'skip'
@@ -49,6 +31,24 @@ And like this for cursor movement:
     #     .filterParent parent
     #     .firstText()
     #   if n.pos < n.node.length then n else n.next()
+
+DOMCursor
+---------
+
+DOMCursors are immutable -- operations on them return new DOMCursers.
+There are two ways to get mutabile cursors, sending @mutable() or
+sending @withMutations (m)-> ...
+
+A DOMCursor has a node, a position, a filter, and a type.
+
+- node: like with ranges, a DOM node
+- position: like with ranges, either the index of a child, for elements, or the index of a character, for text nodes.
+- filter: a function used by @next() and @prev() to skip over portions of DOM. It returns
+  - truthy: to accept a node but its children are still filtered
+  - falsey: to reject a node but its children are still filtered
+  - 'skip': to skip a node and its children
+  - 'quit': to end to make @next() or @prev() return an empty DOMCursor
+- type: 'empty', 'text', or 'element'
 
     class DOMCursor
       constructor: (@node, @pos, filter)->

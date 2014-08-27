@@ -5,7 +5,7 @@ Filtered cursoring on DOM trees.  DOMCursors can move forwards or backwards, by 
 
 This readme file is also the code.
 
-Here are some examples (I'm wrapping them in a -> so I can get syntax highlighting in viewers that support it).
+Here are some examples (I'm wrapping them in a -> to make a no-op that gets syntax highlighting in viewers that support it).
 
     ->
 
@@ -138,6 +138,7 @@ indicates to find the first text node behind the cursor).
 Include (node, 0) up to but not including (node, pos)
 
       countChars: (node, pos)->
+        n = this
         tot = 0
         while !n.isEmpty() && n.node != node
           if n.type == 'text' then tot += n.node.length
